@@ -28,9 +28,9 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </Content>
       <None Remove="appsettings.development.json" />
-      <AdditionalFiles Include="appsettings.development.json">
+      <Resource Include="appsettings.development.json">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </AdditionalFiles>
+      </Resource>
     </ItemGroup>
 
 </Project>
