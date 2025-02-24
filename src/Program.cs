@@ -12,7 +12,8 @@ const string firebird = "firebird";
 var builder = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
     .AddJsonFile("appsettings.json", false, true)
-    .AddJsonFile("appsettings.development.json", true, true);
+    .AddJsonFile("appsettings.development.json", true, true)
+    .AddEnvironmentVariables();
 IConfiguration configuration = builder.Build();
 
 await CreateDatabaseAsync(postgres);
