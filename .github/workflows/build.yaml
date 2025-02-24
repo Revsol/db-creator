@@ -27,6 +27,6 @@ jobs:
         with:
           context: ./src
           push: true
-          tags: 
-            - cisecke/db-creator:v0.3
-            - cisecke/db-creator:latest
+          tags: |
+            cisecke/db-creator:v0.3
+            cisecke/db-creator:latest
