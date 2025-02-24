@@ -23,6 +23,12 @@ await CreateDatabaseAsync(mongodb);
 await CreateDatabaseAsync(interbase);
 await CreateDatabaseAsync(firebird);
 
+var keepRunning = configuration["KeepRunning"]?.Equals("true", StringComparison.OrdinalIgnoreCase) ?? false;
+while (keepRunning)
+{
+    await Task.Delay(1000);
+}
+
 async Task CreateDatabaseAsync(string connectionStringName)
 {
     try

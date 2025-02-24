@@ -1,9 +1,15 @@
 name: Build and Push Docker Image
 
 on:
-  push:
-    branches:
-      - '*'
+#  push:
+#    branches:
+#      - main
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Sets the docker image version number.'
+        required: true
+        default: '1.0'
 
 jobs:
   build:
@@ -28,5 +34,5 @@ jobs:
           context: ./src
           push: true
           tags: |
-            cisecke/db-creator:v0.3
+            cisecke/db-creator:v${{ github.event.inputs.version }}
             cisecke/db-creator:latest

@@ -1,8 +1,9 @@
 # DB-Creator
 
-This application is designed to create databases on existing database servers. Simply use a named connection string, and the app will create the corresponding database for it. You can use multiple connection strings at the same time but only 1 for each provider.
+This application is designed to create databases on existing database servers. Simply use a named connection string, and the app will create the corresponding database for it. You can use multiple connection strings at the same time but only one for each provider.
 
-### Environment Variable
+## Environment Variables
+### ConnectionStrings
 To configure the connection string, set an environment variable using the following schema:
 ```
 ConnectionStrings__{ConnectionStringName}
@@ -14,11 +15,18 @@ Example of an environment variable for postgres:
 ConnectionStrings__postgres="User ID=sa;Password=mypassword;Host=localhost;Port=5432;Database=myDataBase;"
 ```
 
-### Docker Run Example
+### KeepRunning
+```
+KeepRunning=true
+```
+Keeps the container running. This is useful when used as deployment in kubernetes or for testing. Defaults to false.
+
+## Docker Run Example
 To run the application using Docker, you can use the following command:
 ```
-docker run -e ConnectionStrings__postgres="User ID=sa;Password=mypassword;Host=localhost;Port=5432;Database=myDataBase;" cisecke/db-creator
+docker run -e ConnectionStrings__postgres="User ID=sa;Password=mypassword;Host=localhost;Port=5432;Database=myDataBase;" -e KeepRunning="true" cisecke/db-creator
 ```
+Ensure you have the correct environment variables set for your specific database provider. The provided example shows how to configure a connection string for PostgreSQL.
 
 ## Provider
 ### Npgsql
@@ -40,7 +48,7 @@ Version: 9.23.60
 ConnectionStringName: oracle  
 ### MySql / MariaDB
 Provider: Pomelo.EntityFrameworkCore.MySql  
-Version: 8.0.2  
+Version: 9.0.0-preview.3.efcore.9.0.0  
 ConnectionStringName: mysql  
 ### Interbase
 Provider: InterBaseSql.EntityFrameworkCore.InterBase  
@@ -50,7 +58,3 @@ ConnectionStringName: interbase
 Provider: FirebirdSql.EntityFrameworkCore.Firebird  
 Version: 12.0.0  
 ConnectionStringName: firebird  
-### OpenEdge
-Provider: EntityFrameworkCore.OpenEdge  
-Version: 1.0.11  
-ConnectionStringName: openedge  
