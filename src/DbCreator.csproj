@@ -9,7 +9,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="EntityFrameworkCore.OpenEdge" Version="1.0.11" />
       <PackageReference Include="FirebirdSql.EntityFrameworkCore.Firebird" Version="12.0.0" />
       <PackageReference Include="InterBaseSql.EntityFrameworkCore.InterBase" Version="10.0.2" />
       <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.2" />

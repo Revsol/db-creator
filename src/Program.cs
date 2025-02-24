@@ -1,6 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 const string postgres = "postgres";
@@ -10,12 +8,11 @@ const string oracle = "oracle";
 const string mongodb = "mongodb";
 const string interbase = "interbase";
 const string firebird = "firebird";
-const string openedge = "openedge";
 
 var builder = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
     .AddJsonFile("appsettings.json", false, true)
-    .AddJsonFile($"appsettings.development.json", true, true);
+    .AddJsonFile("appsettings.development.json", true, true);
 IConfiguration configuration = builder.Build();
 
 await CreateDatabaseAsync(postgres);
@@ -25,7 +22,6 @@ await CreateDatabaseAsync(oracle);
 await CreateDatabaseAsync(mongodb);
 await CreateDatabaseAsync(interbase);
 await CreateDatabaseAsync(firebird);
-await CreateDatabaseAsync(openedge);
 
 async Task CreateDatabaseAsync(string connectionStringName)
 {
@@ -62,23 +58,16 @@ async Task CreateDatabaseAsync(string connectionStringName)
             case firebird:
                 dbContextOptionsBuilder.UseFirebird(connectionString);
                 break;
-            case openedge:
-                dbContextOptionsBuilder.UseOpenEdge(connectionString);
-                break;
-        };
-    
+        } ;
+
         var dbContextOptions = dbContextOptionsBuilder
             .Options;
 
         var context = new DbContext(dbContextOptions);
         if (await context.Database.EnsureCreatedAsync())
-        {
             Console.WriteLine($"Database created for {connectionStringName}");
-        }
         else
-        {
             Console.WriteLine($"Database already exists for {connectionStringName}");
-        }
     }
     catch (Exception e)
     {
