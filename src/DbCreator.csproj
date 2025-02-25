@@ -8,6 +8,10 @@
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <InvariantGlobalization>false</InvariantGlobalization>
+    </PropertyGroup>
+
     <ItemGroup>
       <PackageReference Include="FirebirdSql.EntityFrameworkCore.Firebird" Version="12.0.0" />
       <PackageReference Include="InterBaseSql.EntityFrameworkCore.InterBase" Version="10.0.2" />
