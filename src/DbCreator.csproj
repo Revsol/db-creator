@@ -23,7 +23,7 @@
       <PackageReference Include="MongoDB.EntityFrameworkCore" Version="8.2.3" />
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.3" />
       <PackageReference Include="Oracle.EntityFrameworkCore" Version="9.23.60" />
-      <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
+      <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0-preview.3.efcore.9.0.0" />
     </ItemGroup>
 
     <ItemGroup>
